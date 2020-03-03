@@ -1,64 +1,98 @@
 //variable array of simpsons questions and answers
-var simpsonsTriv = {
-    questOne: {
-        choices: ["Abraham Simpson", "Jebediah Springfield", "Hans Springfield", "Abraham Lincoln"]
-        // validAnswer: 1
+var simpsonsTriv = 
+[
+    {
+        question: "Who founded Springfield?",
+        choices: ["Abraham Simpson", "Jebediah Springfield", "Hans Springfield", "Abraham Lincoln"],
+        answer: "Jebediah Springfield"
     },
-    questTwo: {
-        choices: ["Homer Simpson", "Ned Flanders", "Apu Nahasapeenmapetilon", "Moe Seyslak"]
-        // validAnswer: 2
+    {
+        question: "Who owns the Kwik-E-Mart?",
+        choices: ["Homer Simpson", "Ned Flanders", "Apu Nahasapeenmapetilon", "Moe Seyslak"],
+        answer: "Apu Nahasapeenmapetilon"
     }, 
-    questThree: { 
+    {
+        question: "What is Homers favorite beer?", 
         choices: ["DUFF", "Malk", "Fudd Beer", "Flaming Moe"],
-        // validAnswer: 0
+        answer: "DUFF"
     }, 
-    questFour: { 
+    {
+        question: "What is the name of Mr. Burns' assistant?", 
         choices: ["Seymour Skinner", "Barnard Gumble", "Waylon Smithers", "Carl Carlson"],
-    // validAnswer: 2
+        answer: "Waylon Smithers"
     }, 
-    questFive: { 
+    {
+        question: "What did Homer give to Marge for their wedding anniversary in season 24?",
         choices: ["Diamond ring and earrings", "A box of donuts", "A dozen of roses", "A miniature Train"],
-    // validAnswer: 3
+        answer: "A miniature Train"
     }, 
-    questSix: { 
+    {
+        question: "What is Barts and Lisa's favortie cartoon show?" ,
         choices: ["Itchy & Scratchy", "Tom & Jerry", "Pink Panther", "Tiny Toon"],
-    // validAnswer: 0
-    }
-};
-//correct, incorrect, and unanswered questions
-var totalQuestions = 0;
-var correctAns = 0;
-var incorrectAns = 0;
-var unAns = 0;
+        answer: "Itchy & Scratchy"
+    }];
+
+
 //Variable that will hold our setInterval that runs the timer for 120 seconds
 var intervalId;
 //set our counter to 120
 var counter = 120;
-console.log(counter);
+var running = false;
+var choiceArray = [];
+//click to start
+$("#start").on("click", function() {
+    $("#start").hide();
+    run();
+    decrement();
+    display();
+})
 //start time to countdown when the page is running
+
 function run() {
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
 }
-//display trvia choices
-console.log("This is choice 1 " + simpsonsTriv.questOne.choices[1]);
-    
-
-
 //decrement function and display countdown
 function decrement() {
     counter--;
-    $("#timer-number").html(counter);
+    $("#timer-number").html("Time Remaining: " + counter);
+    
     if (counter == 0) {
+        
         stop()
     }
 }
-run();
+
 //stop interval when counter hits 0
 function stop() {
     clearInterval(intervalId);
 }
-//button click function
-// $("#button").on("click", function() {
+//display trvia questions and answers with radio buttons
+function display() {
+    var displayQuest = $("#question-one");
+    var answers = $(".answer-check");
+    displayQuest.append("<h2>These are the questions, Good luck, Have fun!</h2>");
+    for (var i = 0; i < simpsonsTriv.length; i++) {
+        displayQuest.append('<div id="questions">' + simpsonsTriv[i].question + '</div>');
 
-// })
+        var choicesOne = simpsonsTriv[i].choices[0];
+        var choicesTwo = simpsonsTriv[i].choices[1];
+        var choicesThree = simpsonsTriv[i].choices[2];
+        var choicesFour = simpsonsTriv[i].choices[3];
+        displayQuest.append(('<div class="answer-check"><input class="answer-check-input" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesOne + '</label></div>'));
+        displayQuest.append(('<div class="answer-check"><input class="answer-check-input" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesTwo + '</label></div>'));
+        displayQuest.append(('<div class="answer-check"><input class="answer-check-input" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesThree + '</label></div>'));
+        displayQuest.append(('<div class="answer-check"><input class="answer-check-input" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesFour + '</label></div>'));
+    }
+}
+//Check if answers are correct, incorrect, or missed
+function checkAnswers() {
+    var correctAnswer;
+    var correctNumber = 0;
+    var incorrectNumber = 0;
+    var unAns = 0;
+    var userChoice;
+    for (var i = o; i < simpsonsTriv.length; i++) {
+        correctAnswer = simpsonsTriv[i].answer;
+    }
+}
