@@ -94,5 +94,14 @@ function checkAnswers() {
     var userChoice;
     for (var i = o; i < simpsonsTriv.length; i++) {
         correctAnswer = simpsonsTriv[i].answer;
+        userChoice = $('input[id=radio'+i+']:checked + label').text();
+
+        if (userChoice === correctAnswer) {
+            correctNumber++;
+        }else if (userChoice === "") {
+            unAns++;
+        } else if (userChoice !== correctAnswer) {
+            incorrectNumber++;
+        }
     }
 }
