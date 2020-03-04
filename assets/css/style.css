@@ -1,0 +1,42 @@
+body{
+    background-image: url(https://www.simpsonsworld.com/SimpsonsEOL.png);
+    z-index: initial;
+}
+
+#master{
+    text-align: center;
+    font-size: 50px;
+    color: red;
+    font-family: 'Permanent Marker', cursive;
+}
+#start{
+    text-align: center;
+    margin-left: 46%;
+    background-color: yellow;
+    border: none;
+    padding: 30px 40px;
+    font-size: 20px;
+    margin-top: 200px;
+    margin-bottom: 400px;
+}
+/* .start-box{
+    padding: 20px 20px 60px 20px;
+    background-color: darkkhaki;
+} */
+#question-one{
+    color: black;
+    text-align: center;
+    padding: 30px 60px;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: darkkhaki;
+    font-size: 20px;
+}
+#remain{
+    color: whitesmoke;
+    font-size: 35px;
+    text-align: center;
+    padding: 20px 20px;
+    
+    
+}

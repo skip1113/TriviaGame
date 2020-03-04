@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpson's Trivia!</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -15,7 +17,9 @@
             <h1 id="logo">The Simpsons Trivia!</h1>
         </div>
     </header>
-    <button class ="btn btn-success" id="start">Start Game</button><br>
+    <div class="start-box">
+        <button class ="btn btn-success" id="start">Start Game</button><br>
+    </div>
     <div id="remain">
         <h2>
             <span id="timer-number"></span>
@@ -25,9 +29,11 @@
     <div id="question-one"></div>
 
     <div class="hidden" id="results">
-        <h2>Here are your scores!:</h2>
+        <h2 id="here-text"></h2>
         <h3 id="correct-score"></h3>
+        <br></br>
         <h3 id="incorrect-score"></h3>
+        <br></br>
         <h3 id="unanswered-score"></h3>
     </div>
 
