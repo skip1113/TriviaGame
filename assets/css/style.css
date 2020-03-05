@@ -40,3 +40,10 @@ body{
     
     
 }
+#results{
+    text-align: center;
+    padding: 20px 20px;
+    background-color: darkkhaki;
+    margin-left: 20%;
+    margin-right: 20%;
+}

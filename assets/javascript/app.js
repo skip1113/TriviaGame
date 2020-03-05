@@ -36,7 +36,7 @@ var simpsonsTriv =
 //Variable that will hold our setInterval that runs the timer for 120 seconds
 var intervalId;
 //set our counter to 120
-var counter = 50;
+var counter = 10;
 var running = false;
 var choiceArray = [];
 
@@ -82,7 +82,7 @@ function display() {
         var choicesTwo = simpsonsTriv[i].choices[1];
         var choicesThree = simpsonsTriv[i].choices[2];
         var choicesFour = simpsonsTriv[i].choices[3];
-        displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesOne + '</label></div>');
+        displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" hero = "i"  id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesOne + '</label></div>');
         displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesTwo + '</label></div>');
         displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesThree + '</label></div>');
         displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesFour + '</label></div>');
@@ -98,7 +98,7 @@ function checkAnswers() {
     for (var i = 0; i < simpsonsTriv.length; i++) {
         correctAnswer = simpsonsTriv[i].answer;
         console.log(correctAnswer);
-        userChoice = $('form input[type=radio]:checked').text();
+        userChoice = $('input[type="radio"]:checked').attr(name);
         console.log(userChoice);
         if (userChoice === correctAnswer) {
             correctNumber++;
