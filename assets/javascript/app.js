@@ -82,7 +82,7 @@ function display() {
         var choicesTwo = simpsonsTriv[i].choices[1];
         var choicesThree = simpsonsTriv[i].choices[2];
         var choicesFour = simpsonsTriv[i].choices[3];
-        displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" hero = "i"  id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesOne + '</label></div>');
+        displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesOne + '</label></div>');
         displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesTwo + '</label></div>');
         displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesThree + '</label></div>');
         displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesFour + '</label></div>');
