@@ -4,32 +4,32 @@ var simpsonsTriv =
     {
         question: "Who founded Springfield?",
         choices: ["Abraham Simpson", "Jebediah Springfield", "Hans Springfield", "Abraham Lincoln"],
-        answer: "Jebediah Springfield"
+        answer: 1
     },
     {
         question: "Who owns the Kwik-E-Mart?",
         choices: ["Homer Simpson", "Ned Flanders", "Apu Nahasapeenmapetilon", "Moe Seyslak"],
-        answer: "Apu Nahasapeenmapetilon"
+        answer: 2
     }, 
     {
         question: "What is Homers favorite beer?", 
         choices: ["DUFF", "Malk", "Fudd Beer", "Flaming Moe"],
-        answer: "DUFF"
+        answer: 0
     }, 
     {
         question: "What is the name of Mr. Burns' assistant?", 
         choices: ["Seymour Skinner", "Barnard Gumble", "Waylon Smithers", "Carl Carlson"],
-        answer: "Waylon Smithers"
+        answer: 2
     }, 
     {
         question: "What did Homer give to Marge for their wedding anniversary in season 24?",
         choices: ["Diamond ring and earrings", "A box of donuts", "A dozen of roses", "A miniature Train"],
-        answer: "A miniature Train"
+        answer: 3
     }, 
     {
         question: "What is Barts and Lisa's favortie cartoon show?" ,
         choices: ["Itchy & Scratchy", "Tom & Jerry", "Pink Panther", "Tiny Toon"],
-        answer: "Itchy & Scratchy"
+        answer: 0
     }];
 
 
@@ -82,10 +82,12 @@ function display() {
         var choicesTwo = simpsonsTriv[i].choices[1];
         var choicesThree = simpsonsTriv[i].choices[2];
         var choicesFour = simpsonsTriv[i].choices[3];
-        displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesOne + '</label></div>');
-        displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesTwo + '</label></div>');
-        displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesThree + '</label></div>');
-        displayQuest.append('<div class="answer-check"><input class="answerInput" type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesFour + '</label></div>');
+        console.log("This choice " +choicesOne);
+        // displayQuest.append(`<div class="answer-check"><input class="answerInput" value=${0} type="radio" name="radio-group${i}" id="radio${i}"><label class="answer-checklabel" id="radio${i} label" for="radio'+i+'">${choicesOne}</label></div>`);
+        displayQuest.append('<div class="answer-check"><input class="answerInput" value='+0+' type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesOne + '</label></div>');
+        displayQuest.append('<div class="answer-check"><input class="answerInput" value='+1+' type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesTwo + '</label></div>');
+        displayQuest.append('<div class="answer-check"><input class="answerInput" value='+2+' type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesThree + '</label></div>');
+        displayQuest.append('<div class="answer-check"><input class="answerInput" value='+3+' type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesFour + '</label></div>');
     }
 }
 //Check if answers are correct, incorrect, or missed
@@ -97,12 +99,13 @@ function checkAnswers() {
     var userChoice;
     for (var i = 0; i < simpsonsTriv.length; i++) {
         correctAnswer = simpsonsTriv[i].answer;
-        console.log(correctAnswer);
-        userChoice = $('input[type="radio"]:checked').attr(name);
-        console.log(userChoice);
-        if (userChoice === correctAnswer) {
+        console.log("THis is the correct answer " + correctAnswer);
+        userChoice = $("input[name=radio-group"+i+"]:checked").val();
+        console.log("THis is the userchoice " + userChoice);
+        if (userChoice == correctAnswer) {
             correctNumber++;
-        }else if (userChoice === "") {
+
+        }else if (userChoice == "") {
             unAns++;
         } else if (userChoice !== correctAnswer) {
             incorrectNumber++;
