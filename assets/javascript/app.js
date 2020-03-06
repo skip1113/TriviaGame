@@ -36,9 +36,14 @@ var simpsonsTriv =
 //Variable that will hold our setInterval that runs the timer for 120 seconds
 var intervalId;
 //set our counter to 120
-var counter = 10;
+var counter = 60;
 var running = false;
 var choiceArray = [];
+var incorrectNumber = 0;
+var correctNumber = 0;
+var unAns = 0;
+var correctAnswer = '';
+var userChoice = '';
 
 //click to start
 $("#start").on("click", function() {
@@ -71,55 +76,109 @@ function stop() {
 }
 //display trvia questions and answers with radio buttons
 function display() {
-    var displayQuest = $("#question-one");
-    var answers = $(".answer-check");
-    
-    displayQuest.append("<h2>These are the questions, Good luck, Have fun!</h2>");
-    for (var i = 0; i < simpsonsTriv.length; i++) {
-        displayQuest.append('<div id="questions"><br><strong>' + simpsonsTriv[i].question + '</strong></br></div>');
+	var displayQuest = $('#question-one');
+	var answers = $('.answer-check');
 
-        var choicesOne = simpsonsTriv[i].choices[0];
-        var choicesTwo = simpsonsTriv[i].choices[1];
-        var choicesThree = simpsonsTriv[i].choices[2];
-        var choicesFour = simpsonsTriv[i].choices[3];
-        console.log("This choice " +choicesOne);
-        // displayQuest.append(`<div class="answer-check"><input class="answerInput" value=${0} type="radio" name="radio-group${i}" id="radio${i}"><label class="answer-checklabel" id="radio${i} label" for="radio'+i+'">${choicesOne}</label></div>`);
-        displayQuest.append('<div class="answer-check"><input class="answerInput" value='+0+' type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesOne + '</label></div>');
-        displayQuest.append('<div class="answer-check"><input class="answerInput" value='+1+' type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesTwo + '</label></div>');
-        displayQuest.append('<div class="answer-check"><input class="answerInput" value='+2+' type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesThree + '</label></div>');
-        displayQuest.append('<div class="answer-check"><input class="answerInput" value='+3+' type="radio" name="radio-group'+i+'" id="radio'+i+'"><label class="answer-checklabel" id="radio'+i+'label" for="radio'+i+'">' + choicesFour + '</label></div>');
-    }
+	displayQuest.append('<h2>These are the questions, Good luck, Have fun!</h2>');
+	for (var i = 0; i < simpsonsTriv.length; i++) {
+		displayQuest.append('<div id="questions"><br><strong>' + simpsonsTriv[i].question + '</strong></br></div>');
+
+		var choicesOne = simpsonsTriv[i].choices[0];
+		var choicesTwo = simpsonsTriv[i].choices[1];
+		var choicesThree = simpsonsTriv[i].choices[2];
+		var choicesFour = simpsonsTriv[i].choices[3];
+		console.log('This choice ' + choicesOne);
+		// displayQuest.append(`<div class="answer-check"><input class="answerInput" value=${0} type="radio" name="radio-group${i}" id="radio${i}"><label class="answer-checklabel" id="radio${i} label" for="radio'+i+'">${choicesOne}</label></div>`);
+		displayQuest.append(
+			'<div class="answer-check"><input class="answerInput" value=' +
+				0 +
+				' type="radio" name=' +
+				i +
+				' id="radio' +
+				i +
+				'"><label class="answer-checklabel" id="radio' +
+				i +
+				'label" for="radio' +
+				i +
+				'">' +
+				choicesOne +
+				'</label></div>'
+		);
+		displayQuest.append(
+			'<div class="answer-check"><input class="answerInput" value=' +
+				1 +
+				' type="radio" name=' +
+				i +
+				' id="radio' +
+				i +
+				'"><label class="answer-checklabel" id="radio' +
+				i +
+				'label" for="radio' +
+				i +
+				'">' +
+				choicesTwo +
+				'</label></div>'
+		);
+		displayQuest.append(
+			'<div class="answer-check"><input class="answerInput" value=' +
+				2 +
+				' type="radio" name=' +
+				i +
+				' id="radio' +
+				i +
+				'"><label class="answer-checklabel" id="radio' +
+				i +
+				'label" for="radio' +
+				i +
+				'">' +
+				choicesThree +
+				'</label></div>'
+		);
+		displayQuest.append(
+			'<div class="answer-check"><input class="answerInput" value=' +
+				3 +
+				' type="radio" name=' +
+				i +
+				' id="radio' +
+				i +
+				'"><label class="answer-checklabel" id="radio' +
+				i +
+				'label" for="radio' +
+				i +
+				'">' +
+				choicesFour +
+				'</label></div>'
+		);
+	}
 }
 //Check if answers are correct, incorrect, or missed
-function checkAnswers() {
-    var correctAnswer;
-    var correctNumber = 0;
-    var incorrectNumber = 0;
-    var unAns = 0;
-    var userChoice;
-    for (var i = 0; i < simpsonsTriv.length; i++) {
-        correctAnswer = simpsonsTriv[i].answer;
-        console.log("THis is the correct answer " + correctAnswer);
-        userChoice = $("input[name=radio-group"+i+"]:checked").val();
-        console.log("THis is the userchoice " + userChoice);
-        if (userChoice == correctAnswer) {
-            correctNumber++;
 
-        }else if (userChoice == "") {
-            unAns++;
-        } else if (userChoice !== correctAnswer) {
-            incorrectNumber++;
-        }
-        endResults(correctNumber, incorrectNumber, unAns);
-    }
+function checkAnswers() {
+	for (var i = 0; i < simpsonsTriv.length; i++) {
+		correctAnswer = simpsonsTriv[i].answer;
+		console.log('THis is the correct answer ' + correctAnswer);
+
+		userChoice = $('input[name="' + i + '"]:checked').val();
+		// $("input[name='gender']:checked").val();
+		console.log('THis is the userchoice ' + userChoice);
+		if (userChoice == correctAnswer) {
+			correctNumber++;
+		} else if (userChoice == '') {
+			unAns++;
+		} else if (userChoice !== correctAnswer || userChoice == undefined) {
+			incorrectNumber++;
+		}
+	}
+
+	endResults();
 }
 //after counter ends show hidden results page
-function endResults(correctNumber, incorrectNumber, unAns) {
-    $("#results").show();
-    $("#question-one").empty();
-    $("#timer-number").empty();
-    $("#here-text").text("Here are the results:");
-    $("#correct-score").text("Your correct answers!: " + correctNumber);
-    $("#incorrect-score").text("Wrong answers: " + incorrectNumber);
-    $("#unanswered-score").text("Unanswered questions: " + unAns);
+function endResults() {
+	$('#results').show();
+	$('#question-one').empty();
+	$('#timer-number').empty();
+	$('#here-text').text('Here are the results:');
+	$('#correct-score').text('Your correct answers!: ' + correctNumber);
+	$('#incorrect-score').text('Wrong answers: ' + incorrectNumber);
+	
 }
