@@ -155,7 +155,7 @@ function display() {
 		checkAnswers();
 		stop();
 		endResults();
-	}	
+	})	
 }
 //Check if answers are correct, incorrect, add missed questions to incorrect
 
