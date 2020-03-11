@@ -52,6 +52,7 @@ $("#start").on("click", function() {
     decrement();
     display();
 })
+	
 //start time to countdown when the page is running
 
 function run() {
@@ -150,8 +151,13 @@ function display() {
 				'</label></div>'
 		);
 	}
+	$("#done").on("click", function() {
+		checkAnswers();
+		stop();
+		endResults();
+	}	
 }
-//Check if answers are correct, incorrect, or missed
+//Check if answers are correct, incorrect, add missed questions to incorrect
 
 function checkAnswers() {
 	for (var i = 0; i < simpsonsTriv.length; i++) {
