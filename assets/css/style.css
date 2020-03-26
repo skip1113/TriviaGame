@@ -47,3 +47,8 @@ body{
     margin-left: 20%;
     margin-right: 20%;
 }
+.finishBtn{
+    padding: 20px;
+    background-color: rebeccapurple;
+    border: 2px solid black;
+}

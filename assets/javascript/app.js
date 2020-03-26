@@ -29,7 +29,22 @@ var simpsonsTriv =
     {
         question: "What is Barts and Lisa's favortie cartoon show?" ,
         choices: ["Itchy & Scratchy", "Tom & Jerry", "Pink Panther", "Tiny Toon"],
-        answer: 0
+		answer: 0
+	},
+	{
+		question: "Who has tried many times to kill Bart?",
+		choices: ["Sideshow Mel", "Krusty", "Sideshow Bob", "Ned Flanders"],
+		answer: 2
+	},
+	{
+		question: "Who is the news reporter for channel six?",
+		choices: ["Kent Brockman", "Bumblebee Man", "Krusty", "Homer"],
+		answer: 0
+	},
+	{
+		question: "The simpsons live on the following street...",
+		choices: ["Woodview Terrace", "Pine Tree Terrace", "State Street", "Evergreen Terrace"],
+		answer: 3	
     }];
 
 
@@ -50,7 +65,8 @@ $("#start").on("click", function() {
     $("#start").hide();
     run();
     decrement();
-    display();
+	display();
+	doneButton();
 })
 	
 //start time to countdown when the page is running
@@ -151,7 +167,7 @@ function display() {
 				'</label></div>'
 		);
 	}
-	$("#done").on("click", function() {
+	$(".finishBtn").on("click", function() {
 		checkAnswers();
 		stop();
 		endResults();
@@ -178,6 +194,14 @@ function checkAnswers() {
 
 	endResults();
 }
+function doneButton() {
+	$("#done-btn").empty();
+	var newButton = $("<button>");
+	newButton.addClass("finishBtn");
+	newButton.text("Done!");
+	$("#done-btn").append(newButton);
+
+}
 //after counter ends show hidden results page
 function endResults() {
 	$('#results').show();
@@ -188,3 +212,4 @@ function endResults() {
 	$('#incorrect-score').text('Wrong answers: ' + incorrectNumber);
 	
 }
+$(document).on("click", ".finishBtn", endResults);
