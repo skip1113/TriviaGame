@@ -1,6 +1,7 @@
 body{
     background-image: url(https://www.simpsonsworld.com/SimpsonsEOL.png);
     z-index: initial;
+    background-position: top;
 }
 
 #master{
@@ -16,8 +17,9 @@ body{
     border: none;
     padding: 30px 40px;
     font-size: 20px;
-    margin-top: 200px;
+    margin-top: 150px;
     margin-bottom: 400px;
+    border-radius: 5px;
 }
 /* .start-box{
     padding: 20px 20px 60px 20px;
